@@ -1,0 +1,453 @@
+{% load  static %}
+{% load staticfiles %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Eat Plus</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{% static 'assets/css/style.css' %}">
+  </head>
+  <body>
+    <div class="row">
+      <div class="container-fluid">
+      <header>
+        <nav class="navbar navbar-default">
+            <!-- note -->
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="#">eatplus</a>
+            </div>
+
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+              <form class="navbar-form navbar-left">
+                <div class="form-group">
+                  <div class="inner-addon right-addon">
+                      <i class="glyphicon glyphicon glyphicon-map-marker"></i>
+                        <input type="text" class="form-control" placeholder="71 via italia, toronto, m6h3r7, ON, Canada">
+                  </div>
+                </div>
+              </form>
+              <ul class="nav navbar-nav navbar-right">
+                <li><a href="#"><img class="nav-img" src="{% static 'assets/img/cart.png' %}"></a></li>
+                <li><a href="#"><img class="nav-img" src="{% static 'assets/img/profile-pic.png' %}"></a></li>
+                <li><a href="#"><button class="btn">Sign in</button></a></li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+      </header>
+      </div>
+    </div>
+
+
+
+    <div class="row">
+        <!-- note -->
+{#      <div class="container-fluid">#}
+        <div class="nav-top">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-4 col-sm-4 col-xs-12">
+                <h3>{{ restaurant.name }}</h3>
+              </div>
+              <div class="col-md-4 col-sm-4 col-xs-12 nav-top-middle">
+                <div class="btn-group" role="group" aria-label="...">
+                  <button type="button" class="btn btn-default">Delivery</button>
+                  <button type="button" class="btn btn-default">Takeout</button>
+                </div>
+              </div>
+              <div class="col-md-4 col-sm-4 col-xs-12 nav-top-right">
+                <div class="btn-group" role="group" aria-label="...">
+                  <div class="btn-group" role="group">
+                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      Relevence
+                      <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu">
+                      <li><a href="#">link</a></li>
+                      <li><a href="#">link</a></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+{#      </div>#}
+    </div>
+
+
+  <div class="row">
+    <div class="container">
+      <div class="hero-area-body">
+        <h1>Pizzas</h1>
+        <div class="row">
+          <div class="col-md-7 col-xs-12">
+            <div class="accordion" id="accordion2">
+              <div class="accordion-group">
+                <div class="accordion-heading accordion-heading-left">
+                  <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
+                <img src="{% static 'assets/img/pizza.jpg' %}" alt="Pizza Photo" class="img-responsive left-float">
+                <h3>Double Cheseese Pizza</h3>
+                </a>
+                  <h2 class="price-add"><i class="fa fa-lg fa-plus-square" aria-hidden="true"></i></h2>
+                  <h2 class="price-add"><span style="font-weight: bold;">$15</span></h2>
+                  <p>Short description</p>
+                </div>
+                <div id="collapseOne" class="accordion-body collapse">
+                  <div class="accordion-inner">
+                    <table class="table">
+                      <tbody>
+                        <tr>
+                          <td class="tag-heading">Size</td>
+                          <td>Small</td>
+                          <td>Medium</td>
+                          <td>Large</td>
+                        </tr>
+                        <tr>
+                          <td class="tag-heading">Dough</td>
+                          <td>Glueten Free</td>
+                          <td>Grain</td>
+                          <td>More</td>
+                        </tr>
+                        <tr>
+                          <td class="tag-heading">Tooping</td>
+                          <td>Olives</td>
+                          <td>Potatoes</td>
+                          <td>Peppers</td>
+                        </tr>
+                         <tr>
+                          <td class="tag-heading">More option</td>
+                          <td>More</td>
+                          <td>More</td>
+                          <td>More</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  </div>
+                <div class="accordion-heading accordion-heading-left">
+                  <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo">
+                <img src="{% static 'assets/img/pizza.jpg' %}" alt="Pizza Photo" class="img-responsive left-float">
+                <h3>Double Cheseese Pizza</h3>
+                </a>
+                  <h2 class="price-add"><i class="fa fa-lg fa-plus-square" aria-hidden="true"></i></h2>
+                  <h2 class="price-add"><span style="font-weight: bold;">$15</span></h2>
+                  <p>Short description</p>
+                </div>
+                 <div id="collapseTwo" class="accordion-body collapse">
+                    <div class="accordion-inner">
+                      <table class="table">
+                        <tbody>
+                          <tr>
+                            <td class="tag-heading">Size</td>
+                            <td>Small</td>
+                            <td>Medium</td>
+                            <td>Large</td>
+                          </tr>
+                          <tr>
+                            <td class="tag-heading">Dough</td>
+                            <td>Glueten Free</td>
+                            <td>Grain</td>
+                            <td>More</td>
+                          </tr>
+                          <tr>
+                            <td class="tag-heading">Tooping</td>
+                            <td>Olives</td>
+                            <td>Potatoes</td>
+                            <td>Peppers</td>
+                          </tr>
+                           <tr>
+                            <td class="tag-heading">More option</td>
+                            <td>More</td>
+                            <td>More</td>
+                            <td>More</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+               <div class="accordion-heading accordion-heading-left">
+                  <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseThree">
+                <img src="{% static 'assets/img/pizza.jpg' %}" alt="Pizza Photo" class="img-responsive left-float">
+                <h3>Double Cheseese Pizza</h3>
+                </a>
+                  <h2 class="price-add"><i class="fa fa-lg fa-plus-square" aria-hidden="true"></i></h2>
+                  <h2 class="price-add"><span style="font-weight: bold;">$15</span></h2>
+                  <p>Short description</p>
+                </div>
+                 <div id="collapseThree" class="accordion-body collapse">
+                    <div class="accordion-inner">
+                      <table class="table">
+                        <tbody>
+                          <tr>
+                            <td class="tag-heading">Size</td>
+                            <td>Small</td>
+                            <td>Medium</td>
+                            <td>Large</td>
+                          </tr>
+                          <tr>
+                            <td class="tag-heading">Dough</td>
+                            <td>Glueten Free</td>
+                            <td>Grain</td>
+                            <td>More</td>
+                          </tr>
+                          <tr>
+                            <td class="tag-heading">Tooping</td>
+                            <td>Olives</td>
+                            <td>Potatoes</td>
+                            <td>Peppers</td>
+                          </tr>
+                           <tr>
+                            <td class="tag-heading">More option</td>
+                            <td>More</td>
+                            <td>More</td>
+                            <td>More</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          <div class="col-md-5 col-xs-12">
+            <div class="accordion" id="accordion3">
+              <div class="accordion-group">
+                <div class="accordion-heading accordion-heading-right">
+                  <a href="#">
+                    <h3 class="delete-cart"><i class="fa fa-trash-o" aria-hidden="true"></i></h3>
+                  </a>
+                  <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion3" href="#collapse6">
+                <h3>Double Cheseese Pizza</h3>
+                </a>
+                  <h4 class="price-add-cart"><i class="fa fa-minus-square" aria-hidden="true"></i></h4>
+                  <span class="qnty">1</span>
+                  <h4 class="price-add-cart"><i class="fa fa-plus-square" aria-hidden="true"></i></h4>
+                  <h3 class="price-add-cart"><span style="margin-left: 20px;">$15</span></h3>
+                </div>
+                <div id="collapse6" class="accordion-body collapse">
+                  <div class="accordion-inner">
+                    <form class="form-inline">
+                      <table class="table">
+                        <tbody>
+                          <tr>
+                            <td>
+                              <div class="form-group">
+                                  <p class="form-control-static">Size</p>
+                              </div>
+                            </td>
+                            <td>
+                            <div class="form-group">
+                                <select class="form-control">
+                                    <option>Small</option>
+                                    <option>Medium</option>
+                                    <option>Large</option>
+                                </select>
+                            </div>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <div class="form-group">
+                                  <p class="form-control-static">Dough</p>
+                              </div>
+                            </td>
+                            <td>
+                            <div class="form-group">
+                                <select class="form-control">
+                                    <option>Gluten free</option>
+                                    <option>Grain</option>
+                                    <option>More</option>
+                                </select>
+                            </div>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <div class="form-group">
+                                  <p class="form-control-static">Tooping</p>
+                              </div>
+                            </td>
+                            <td>
+                            <div class="form-group">
+                                <select class="form-control">
+                                    <option>Olives</option>
+                                    <option>Potatoes</option>
+                                    <option>Peppers</option>
+                                </select>
+                            </div>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <div class="form-group">
+                                  <p class="form-control-static">More option</p>
+                              </div>
+                            </td>
+                            <td>
+                            <div class="form-group">
+                                <select class="form-control">
+                                    <option>More</option>
+                                    <option>More</option>
+                                    <option>More</option>
+                                </select>
+                            </div>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </form>
+                  </div>
+                  </div>
+                <div class="accordion-heading accordion-heading-right">
+                  <a href="#">
+                    <h3 class="delete-cart"><i class="fa fa-trash-o" aria-hidden="true"></i></h3>
+                  </a>
+                  <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion3" href="#collapse4">
+                <h3>Double Cheseese Pizza</h3>
+                </a>
+                  <h4 class="price-add-cart"><i class="fa fa-minus-square" aria-hidden="true"></i></h4>
+                  <span class="qnty">1</span>
+                  <h4 class="price-add-cart"><i class="fa fa-plus-square" aria-hidden="true"></i></h4>
+                  <h3 class="price-add-cart"><span style="margin-left: 20px;">$15</span></h3>
+                </div>
+                <div id="collapse4" class="accordion-body collapse">
+                  <div class="accordion-inner">
+                    <form class="form-inline">
+                      <table class="table">
+                        <tbody>
+                          <tr>
+                            <td>
+                              <div class="form-group">
+                                  <p class="form-control-static">Size</p>
+                              </div>
+                            </td>
+                            <td>
+                            <div class="form-group">
+                                <select class="form-control">
+                                    <option>Small</option>
+                                    <option>Medium</option>
+                                    <option>Large</option>
+                                </select>
+                            </div>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <div class="form-group">
+                                  <p class="form-control-static">Dough</p>
+                              </div>
+                            </td>
+                            <td>
+                            <div class="form-group">
+                                <select class="form-control">
+                                    <option>Gluten free</option>
+                                    <option>Grain</option>
+                                    <option>More</option>
+                                </select>
+                            </div>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <div class="form-group">
+                                  <p class="form-control-static">Tooping</p>
+                              </div>
+                            </td>
+                            <td>
+                            <div class="form-group">
+                                <select class="form-control">
+                                    <option>Olives</option>
+                                    <option>Potatoes</option>
+                                    <option>Peppers</option>
+                                </select>
+                            </div>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <div class="form-group">
+                                  <p class="form-control-static">More option</p>
+                              </div>
+                            </td>
+                            <td>
+                            <div class="form-group">
+                                <select class="form-control">
+                                    <option>More</option>
+                                    <option>More</option>
+                                    <option>More</option>
+                                </select>
+                            </div>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </form>
+                  </div>
+                </div>
+                <div class="payment">
+
+                  <p class="checkbox-inline" style="margin-left: 15px;">Cash</p>
+                  <input type="checkbox" id="cash" style="width: 25px; height: 25px; margin-top: 0px; position: absolute;
+    margin-left: 0px; background: none;" value="option1">
+
+                  <p class="checkbox-inline" style="margin-left: 15px;">Credit Card</p>
+                  <input type="checkbox" id="credit_card" style="width: 25px; height: 25px; margin-top: 0px; position: absolute;
+    margin-left: 0px;" value="option1">
+
+                  <p class="checkbox-inline" style="margin-left: 15px;">Debit Card</p>
+                  <input type="checkbox" id="debit_card" style="width: 25px; height: 25px; margin-top: 0px; position: absolute;
+    margin-left: 5px;" value="option1">
+
+                </div>
+                <div class="payment-amount">
+                  <div class="row">
+                    <div class="col-md-6">
+                      <h3>Sub total:</h3>
+                    </div>
+                    <div class="col-md-6">
+                      <h3 style="text-align: right; font-weight: bold;">$10.3</h3>
+                    </div>
+                    <div class="col-md-6">
+                      <h3>Total:</h3>
+                    </div>
+                    <div class="col-md-6">
+                      <h3 style="text-align: right; font-weight: bold;">$13.3</h3>
+                    </div>
+                  </div>
+                  <button type="button" class="btn btn-primary btn-block">Place Order</button>
+                </div>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+    $(document).on('show','.accordion', function (e) {
+         //$('.accordion-heading i').toggleClass(' ');
+         $(e.target).prev('.accordion-heading').addClass('accordion-opened');
+    });
+
+    $(document).on('hide','.accordion', function (e) {
+        $(this).find('.accordion-heading').not($(e.target)).removeClass('accordion-opened');
+        //$('.accordion-heading i').toggleClass('fa-chevron-right fa-chevron-down');
+    });
+    </script>
+  </div></body>
+</html>

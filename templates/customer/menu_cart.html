@@ -1,0 +1,283 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="menu-cart">
+    <!-- Restaurants Menus, Relevence -->
+    <div class="row">
+        <div class="container-fluid">
+            <div class="nav-top">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-4 col-sm-4 col-xs-12">
+                            <h3>Toque<span>!</span></h3>
+                        </div>
+                        <div class="col-md-4 col-sm-4 col-xs-12 nav-top-middle">
+                            <div class="btn-group" role="group" aria-label="...">
+                                <a href="{% url 'delivery_menu' restaurant.restaurant_slug %}" style="margin-top: 10px;" type="button" class="btn btn-default deli-main" id="delivery">Delivery</a>
+                                <a href="{% url 'pickup_menu' restaurant.restaurant_slug %}" style="margin-top: 10px;" type="button" class="btn btn-default take-main" id="takeout">Takeout</a>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-sm-4 col-xs-12 nav-top-right">
+                            <div class="btn-group" role="group" aria-label="...">
+                                <div class="btn-group" role="group">
+                                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Relevence
+                                        <i class="glyphicon glyphicon-menu-down blue"></i>
+                                    </button>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="#">link</a></li>
+                                        <li><a href="#">link</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>             
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row item-responsive">
+        <div class="container">
+            <div class="hero-area-body">
+                <h1 class="bold-text pizza">{{ restaurant.name }}</h1>
+                <div class="row">
+                    <!-- Items -->
+                    <div class="col-md-7 col-xs-12">
+                        {% for item in items %}
+                        <div class="accordion" id="accordion2">
+                            <div class="accordion-group">
+                                <div class="accordion-heading accordion-heading-left">
+                                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
+                                <img src="{{ item.image.url }}" alt="{{ item.name }}" class="img-responsive left-float">
+                                <div class="separetor"></div>    
+                                <p class="item-heading">{{ item.name }}</p>
+                                </a>
+                                <p class="price-add"><a href="#"><span class="item-plus">+</span></a></p>
+                                <p class="price-add"><span style="font-weight: bold;">${{ item.price }}</span></p>
+                                <p class="short-desc">{{ item.short_description }} </p>
+                                </div>
+                                <div id="collapseOne" class="accordion-body collapse">
+                                    <div class="accordion-inner">
+                                        <table class="table">
+                                        <tbody>
+                                            {% for option in item.meal_option.all %}
+                                            <tr>
+                                                <td class="tag-heading">{{ option.name }}</td>
+                                                {% for choice in option.option_choice.all %}
+                                                <td>{{ choice.name }}</td>
+                                                {% endfor %}
+                                            </tr>
+                                            {% endfor %}
+                                        </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>  
+                        </div>
+                        {% endfor %}
+                    </div>
+
+                    {% if order %}
+                    <div class="responsive-col">                     
+                        <div class="col-md-5 col-xs-12">
+                            <div class="accordion accordion-right" id="accordion3">
+                                <div class="accordion-group">
+                                    {% for item, choices in order_items.items %}
+                                    <div class="acc-item">
+                                        <div class="accordion-heading accordion-heading-right">
+                                            <a href="#"> 
+                                                <p class="delete-cart inline-para"><i class="fa fa-2x fa-trash-o" aria-hidden="true"></i></p>
+                                            </a>
+                                            <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion3" href="#collapsefirst">
+                                                <p class="right-accordion-heading inline-para">{{ item.item.name }}</p>
+                                            </a>
+                                            <p class="right-accordion-minus inline-para text-right">
+                                                <button type="button" class="btn-number" disabled="disabled" data-type="minus" data-field="quant[1]">
+                                                    <i class="fa fa-minus-square" aria-hidden="true"></i>
+                                                </button>
+                                            </p>
+                                            <span class="right-accordion-qnty inline-para text-right" >
+                                                <input type="text" name="quant[1]" class="form-control input-number" value="{{ item.quantity }}" min="1" max="10">
+                                            </span>
+                                            <p class="right-accordion-plus inline-para text-right">
+                                                <button type="button" class="btn-number" data-type="plus" data-field="quant[1]">
+                                                    <i class="fa fa-plus-square" aria-hidden="true"></i>
+                                                </button>
+                                            </p>
+                                            <p class="right-accordion-price inline-para text-right">$<span>{{ item.get_cost }}</span></p>
+                                        </div>
+                                        <div id="collapsefirst" class="accordion-body collapse">
+                                            <div class="accordion-inner">                 
+                                                <form class="form-inline">
+                                                    <table class="table table-right">
+                                                    <tbody>
+                                                        {% for option in item.item.meal_option.all %}
+                                                        <tr>
+                                                        <td>
+                                                            <div class="form-group">
+                                                                <p class="bold-text">{{ option.name }}</p>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="form-group">
+                                                                <select class="form-control">
+                                                                    {% for choice in option.option_choice.all %}
+                                                                    <option {% if choice.name in choices %}selected value="{{ choice }}"{% endif %}>{{ choice }}</option>
+                                                                    {% endfor %}
+                                                                </select>
+                                                            </div>        
+                                                        </td>
+                                                        </tr>
+                                                        {% endfor %}
+                                                    </tbody>
+                                                    </table>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>  
+                                    {% endfor %}  
+
+                                    <div class="payment">
+                                        {% for pm in payment_methods %}
+                                        <p class="checkbox-inline" style="margin-left: 15px;">{{ pm.method }}</p>
+                                        <input type="checkbox" id="cash" style="width: 25px; height: 25px; margin-top: 0px; position: absolute; margin-left: 0px; background: none;" value="option1">
+                                        {% endfor %}
+                                    </div>  
+                                    <div class="payment-amount">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <h3>Sub total:</h3>
+                                            </div> 
+                                            <div class="col-md-6">
+                                                <h3 style="text-align: right; font-weight: bold;">{{ order.get_sub_total }}</h3>
+                                            </div>  
+                                            <div class="col-md-6">
+                                                <h3>Total:</h3>
+                                            </div> 
+                                            <div class="col-md-6">
+                                                <h3 style="text-align: right; font-weight: bold;">{{ order.get_total_cost }}</h3>
+                                            </div>                                      
+                                        </div>
+                                        <button type="button" class="btn btn-primary btn-block">Place Order</button>
+                                    </div>       
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+{% endblock %}
+
+{% block body_scripts %}
+<script type="text/javascript">
+    $(document).on('show','.accordion', function (e) {
+        //$('.accordion-heading i').toggleClass(' ');
+        $(e.target).prev('.accordion-heading').addClass('accordion-opened');
+    });
+  
+    $(document).on('hide','.accordion', function (e) {
+        $(this).find('.accordion-heading').not($(e.target)).removeClass('accordion-opened');
+        //$('.accordion-heading i').toggleClass('fa-chevron-right fa-chevron-down');
+    });
+</script>
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('input:checkbox').click(function() {
+            $('input:checkbox').not(this).prop('checked', false);
+        });
+    });   
+</script>
+<script type="text/javascript">
+    $('.btn-number').click(function(e){
+        e.preventDefault();
+        
+        fieldName = $(this).attr('data-field');
+        type      = $(this).attr('data-type');
+        var input = $("input[name='"+fieldName+"']");
+        var currentVal = parseInt(input.val());
+        if (!isNaN(currentVal)) {
+            if(type == 'minus') {
+                
+                if(currentVal > input.attr('min')) {
+                    input.val(currentVal - 1).change();
+                } 
+                if(parseInt(input.val()) == input.attr('min')) {
+                    $(this).attr('disabled', true);
+                }
+
+            } else if(type == 'plus') {
+
+                if(currentVal < input.attr('max')) {
+                    input.val(currentVal + 1).change();
+                }
+                if(parseInt(input.val()) == input.attr('max')) {
+                    $(this).attr('disabled', true);
+                }
+
+            }
+        } else {
+            input.val(0);
+        }
+    });
+    $('.input-number').focusin(function(){
+       $(this).data('oldValue', $(this).val());
+    });
+    $('.input-number').change(function() {
+        
+        minValue =  parseInt($(this).attr('min'));
+        maxValue =  parseInt($(this).attr('max'));
+        valueCurrent = parseInt($(this).val());
+        
+        name = $(this).attr('name');
+        if(valueCurrent >= minValue) {
+            $(".btn-number[data-type='minus'][data-field='"+name+"']").removeAttr('disabled')
+        } else {
+            alert('Sorry, the minimum value was reached');
+            $(this).val($(this).data('oldValue'));
+        }
+        if(valueCurrent <= maxValue) {
+            $(".btn-number[data-type='plus'][data-field='"+name+"']").removeAttr('disabled')
+        } else {
+            alert('Sorry, the maximum value was reached');
+            $(this).val($(this).data('oldValue'));
+        }
+        
+        
+    });
+    $(".input-number").keydown(function (e) {
+            // Allow: backspace, delete, tab, escape, enter and .
+            if ($.inArray(e.keyCode, [46, 8, 9, 27, 13, 190]) !== -1 ||
+                 // Allow: Ctrl+A
+                (e.keyCode == 65 && e.ctrlKey === true) || 
+                 // Allow: home, end, left, right
+                (e.keyCode >= 35 && e.keyCode <= 39)) {
+                     // let it happen, don't do anything
+                     return;
+            }
+            // Ensure that it is a number and stop the keypress
+            if ((e.shiftKey || (e.keyCode < 48 || e.keyCode > 57)) && (e.keyCode < 96 || e.keyCode > 105)) {
+                e.preventDefault();
+            }
+        });
+</script> 
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('#delivery').mouseenter(function() {
+            $('.nav-top-middle .fir button').addClass('delivery');
+            $('.nav-top-middle .sec button').removeClass('delivery');
+        });
+    });  
+    $(document).ready(function(){
+        $('#takeout').mouseenter(function() {
+            $('.nav-top-middle .sec button').addClass('delivery');
+            $('.nav-top-middle .fir button').removeClass('delivery');
+        });
+    });                
+</script>     
+{% endblock %}

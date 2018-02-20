@@ -1,0 +1,8 @@
+Django==1.11.7
+django-allauth==0.34.0
+djangorestframework==3.7.3
+Pillow==4.3.0
+gunicorn==19.7.1
+django-rest-auth==0.9.2
+djangorestframework-jwt==1.11.0
+django-rest-swagger==2.1.2
